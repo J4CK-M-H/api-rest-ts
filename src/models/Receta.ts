@@ -26,6 +26,10 @@ const recetaSchema = new Schema<Receta>(
     imagen: {
       type: String,
       required: true,
+    },
+    creador: {
+      type: Schema.Types.ObjectId,
+      ref: "Usuario"
     }
   },
   {

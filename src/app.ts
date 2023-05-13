@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config';
+import 'dotenv';
 import dbConnection from './config/mongo';
 import { router } from './routes';
 
@@ -8,6 +8,7 @@ let app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(`${process.cwd()}/storage`));
 
 const PORT_URL = process.env.PORT_URL || 3001 ;
 

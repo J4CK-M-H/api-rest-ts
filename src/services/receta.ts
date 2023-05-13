@@ -32,9 +32,18 @@ const deleteRecetaById = async (id: string) => {
   return responseDelete;
 }
 
+const getRecetasById = async(_id: string) => {
+
+  // console.log('id: '+ _id);
+  
+  const reponseGet = await RecetaModel.find({ creador: _id});
+  return reponseGet;
+}
+
 export {
   insertReceta,
   getRecetaById,
   updateRecetaById,
-  deleteRecetaById
+  deleteRecetaById,
+  getRecetasById
 }

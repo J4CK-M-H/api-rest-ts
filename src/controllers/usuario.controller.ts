@@ -22,7 +22,7 @@ let autenticar = async({ body }: Request, response: Response) => {
 
   try {
     const usuarioResponse = await autenticateUsuario(body);
-    response.status(200).send(usuarioResponse);
+    return response.status(200).send(usuarioResponse);
   
   } catch (error: any) {
     handleHttp(response, error.message);
@@ -30,6 +30,13 @@ let autenticar = async({ body }: Request, response: Response) => {
   
   // return response.status(200).json({msg: "Autenticado"});
 }
+
+const session = async(request: Request, response: Response) => {
+
+  const { user }  = <any>request;
+  return response.json(user)
+}
+
 
 let updateItem = async({ params }: Request, response: Response) => {
 
@@ -46,5 +53,6 @@ let updateItem = async({ params }: Request, response: Response) => {
 export {
   autenticar,
   registrar,
-  updateItem
+  updateItem,
+  session
 }

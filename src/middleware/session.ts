@@ -19,7 +19,7 @@ const checkAuth = async(request: RequestWithUser, response: Response, next: Next
     next();
   } catch (error) {
     return response.status(401).json({
-      message: 'No token invalido'
+      message: 'Token invalido'
     });
   }
 }

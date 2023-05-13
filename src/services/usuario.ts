@@ -13,12 +13,17 @@ const autenticateUsuario = async(data: Auth) => {
   if( isAlreadyExist && ( await bcrypt.compare(password, isAlreadyExist.password ) ) ) {
 
     const token = generarToken(`${isAlreadyExist._id}`);
-    // return token;
+
     const data = {
       token,
-      usuario: isAlreadyExist
+      _id: isAlreadyExist._id,
+      nombre: isAlreadyExist.nombre,
+      apellido: isAlreadyExist.apellido,
+      email: isAlreadyExist.email
     }
+    
     return data;
+    
   }else {
     return ("Correo y/o Password incorrecto");
   }

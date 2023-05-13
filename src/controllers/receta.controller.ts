@@ -1,13 +1,25 @@
 import { Request, Response } from "express";
 import Receta from "../models/Receta";
-import { deleteRecetaById, getRecetaById, insertReceta, updateRecetaById } from "../services/receta";
+import { deleteRecetaById, getRecetaById, getRecetasById, insertReceta, updateRecetaById } from "../services/receta";
 import { handleHttp } from "../utils/error.handle";
 
 
-const crearReceta = async ({ body }: Request, response: Response) => {
+const crearReceta = async ({ body, file }: Request, response: Response) => {
+
+console.log(body.id);
+
+
+  let data = {
+    titulo: body.titulo,
+    origen: body.origen,
+    ingredientes: body.ingredientes,
+    preparacion: body.preparacion,
+    imagen: `${file?.filename}`,
+    creador: body.id
+  }
 
   try {
-    const responseReceta = await insertReceta(body);
+    const responseReceta = await insertReceta(data);
     return response.status(201).json(responseReceta);
     
   } catch (error) {
@@ -68,11 +80,26 @@ const deleteItem = async( request: Request, response: Response ) => {
   }
 }
 
+const obtenerItemsById = async(request: Request, response: Response) => {
+
+  const { id } = request.params;
+  
+  try {
+    const responseItems = await getRecetasById(id);
+    const data = responseItems ? responseItems : []
+    return response.status(200).json(data);
+  } catch (error) {
+    handleHttp(response, 'ERROR_GET_RECETAS'); 
+  }
+
+}
+
 export {
   obtenerItemById,
   obtenerRecetas,
   crearReceta,
   updateItemById,
-  deleteItem
+  deleteItem,
+  obtenerItemsById
 }
 

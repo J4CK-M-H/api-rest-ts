@@ -20,7 +20,7 @@ const usuarioSchema = new Schema<Usuario>(
     password: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
