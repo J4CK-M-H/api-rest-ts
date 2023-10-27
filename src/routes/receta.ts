@@ -5,7 +5,7 @@ import multerMiddleware from '../middleware/file';
 
 const router = Router();
 
-router.get('/obtener-recetas', checkAuth , obtenerRecetas );
+router.get('/obtener-recetas', checkAuth, obtenerRecetas );
 router.get('/obtener-recetas/:id', obtenerItemsById);
 router.get('/obtener-receta/:id', obtenerItemById );
 router.post('/crear-receta', multerMiddleware.single('imagen') ,crearReceta );

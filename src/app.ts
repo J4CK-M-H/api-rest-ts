@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(`${process.cwd()}/storage`));
 
+console.log('Starting');
+
+
 const PORT_URL = process.env.PORT_URL || 3001 ;
 
 dbConnection()

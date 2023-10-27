@@ -25,7 +25,7 @@ const autenticateUsuario = async(data: Auth) => {
     return data;
     
   }else {
-    return ("Correo y/o Password incorrecto");
+    throw new Error("Correo y/o Password incorrecto");
   }
 }
 

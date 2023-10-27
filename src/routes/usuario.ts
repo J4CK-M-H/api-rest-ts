@@ -7,5 +7,4 @@ router.get('/session', checkAuth ,session );
 router.post('/login', autenticar );
 router.post('/registrar', registrar );
 
-
 export { router };

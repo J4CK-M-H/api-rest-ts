@@ -3,11 +3,7 @@ import Receta from "../models/Receta";
 import { deleteRecetaById, getRecetaById, getRecetasById, insertReceta, updateRecetaById } from "../services/receta";
 import { handleHttp } from "../utils/error.handle";
 
-
 const crearReceta = async ({ body, file }: Request, response: Response) => {
-
-console.log(body.id);
-
 
   let data = {
     titulo: body.titulo,
